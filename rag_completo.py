@@ -12,6 +12,12 @@ vectorstore = Chroma(
 pergunta = "Como eu ouço músicas em ordem aleatória?"
 resultados = vectorstore.similarity_search(pergunta, k=3)
 
+print("\n=== CHUNKS USADOS (bruto) ===")
+for r in resultados:
+    print(f"\n--- {r.metadata['fonte']} ---")
+    print(r.page_content)
+
+
 # 3. Montar o contexto (juntando o texto dos chunks encontrados)
 contexto = "\n\n".join([r.page_content for r in resultados])
 

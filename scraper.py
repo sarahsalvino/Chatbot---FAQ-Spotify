@@ -46,7 +46,7 @@ def scrape_article(url):
 #Criando uma lista de linhas de texto, ignorando linhas vazias e linhas que contenham marcadores de corte ou linhas para ignorar
     linhas = []
     for el in elementos:
-        texto = el.get_text(strip=True)
+        texto = el.get_text(separator=" ", strip=True)
         if not texto:
             continue
         #Se bater num marcador de corte, para de coletar linhas
