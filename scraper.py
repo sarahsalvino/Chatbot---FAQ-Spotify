@@ -56,7 +56,7 @@ def scrape_article(url):
             continue
         linhas.append(texto)
 
-    conteudo = "\n".join(linhas)
+    conteudo = "\n\n".join(linhas)
 
     return {"url": url, "titulo": titulo, "conteudo": conteudo}
 

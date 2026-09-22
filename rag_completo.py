@@ -1,31 +1,20 @@
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings, ChatOllama
 
-# 1. Reconectar ao vectorstore que já existe (não reindexar!)
-embeddings = OllamaEmbeddings(model="nomic-embed-text")
-vectorstore = Chroma(
-    persist_directory="vectorstore_teste",
-    embedding_function=embeddings
-)
+embeddings = OllamaEmbeddings(model="bge-m3")
+vectorstore = Chroma(persist_directory="vectorstore_teste", embedding_function=embeddings)
+llm = ChatOllama(model="mistral")
 
-# 2. Fazer a pergunta e buscar os chunks mais relevantes
-pergunta = "Como eu ouço músicas em ordem aleatória?"
-resultados = vectorstore.similarity_search(pergunta, k=3)
+def responder_pergunta(pergunta: str) -> dict:
+    resultados = vectorstore.similarity_search(pergunta, k=5)
+    contexto = "\n\n".join([r.page_content for r in resultados])
+    fontes = list(set([r.metadata["fonte"] for r in resultados]))
 
-print("\n=== CHUNKS USADOS (bruto) ===")
-for r in resultados:
-    print(f"\n--- {r.metadata['fonte']} ---")
-    print(r.page_content)
+    prompt = f"""Você é um assistente de suporte do Spotify. Responda usando apenas as informações do contexto abaixo.
 
-
-# 3. Montar o contexto (juntando o texto dos chunks encontrados)
-contexto = "\n\n".join([r.page_content for r in resultados])
-
-# 4. Coletar as fontes (sem repetir URLs duplicadas)
-fontes = list(set([r.metadata["fonte"] for r in resultados]))
-
-# 5. Montar o prompt final pro LLM
-prompt = f"""Você é um assistente de suporte do Spotify. Responda a pergunta do usuário APENAS com base no contexto abaixo. Se a resposta não estiver no contexto, diga que não sabe.
+Regras:
+1. Se o contexto contém a resposta, responda de forma direta e natural, sem comentar estas instruções.
+2. Se o contexto NÃO contém a informação necessária (por exemplo, preços, planos, cancelamento de assinatura, ou qualquer assunto não coberto), responda apenas: "Não tenho essa informação disponível no momento. Recomendo consultar diretamente o site de suporte do Spotify." Não tente completar com conhecimento próprio sobre o Spotify.
 
 Contexto:
 {contexto}
@@ -34,14 +23,15 @@ Pergunta: {pergunta}
 
 Resposta:"""
 
-# 6. Chamar o Mistral pra gerar a resposta
-llm = ChatOllama(model="mistral")
-resposta = llm.invoke(prompt)
+    resposta = llm.invoke(prompt)
+    return {"resposta": resposta.content, "fontes": fontes}
 
-# 7. Mostrar o resultado final
-print("Resposta do chatbot:")
-print(resposta.content)
 
-print("\nFontes utilizadas:")
-for fonte in fontes:
-    print(f"- {fonte}")
+if __name__ == "__main__":
+    pergunta = "Como eu ouço músicas em ordem aleatória?"
+    resultado = responder_pergunta(pergunta)
+    print("Resposta do chatbot:")
+    print(resultado["resposta"])
+    print("\nFontes utilizadas:")
+    for fonte in resultado["fontes"]:
+        print(f"- {fonte}")

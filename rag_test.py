@@ -18,14 +18,14 @@ for artigo in artigos:
 print(f"Total de artigos carregados: {len(documentos)}")
 
 splitter = RecursiveCharacterTextSplitter(
-    chunk_size=500,
+    chunk_size=300,
     chunk_overlap=50
 )
 chunks = splitter.split_documents(documentos)
 
 print(f"Total de chunks gerados: {len(chunks)}")
 
-embeddings = OllamaEmbeddings(model="nomic-embed-text")
+embeddings = OllamaEmbeddings(model="bge-m3")
 
 vectorstore = Chroma.from_documents(
     documents=chunks,
