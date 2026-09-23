@@ -1,4 +1,4 @@
-from rag_completo import responder_pergunta
+from backend.app.rag_chain import responder_pergunta
 
 perguntas = [
     "Como eu ouço músicas em ordem aleatória?",

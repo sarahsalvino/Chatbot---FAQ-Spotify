@@ -1,8 +1,10 @@
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings, ChatOllama
 
+CAMINHO_VECTORSTORE = "backend/vectorstore"
+
 embeddings = OllamaEmbeddings(model="bge-m3")
-vectorstore = Chroma(persist_directory="vectorstore_teste", embedding_function=embeddings)
+vectorstore = Chroma(persist_directory=CAMINHO_VECTORSTORE, embedding_function=embeddings)
 llm = ChatOllama(model="mistral")
 
 def responder_pergunta(pergunta: str) -> dict:
