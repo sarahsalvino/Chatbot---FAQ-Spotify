@@ -3,9 +3,9 @@ from langchain_ollama import OllamaEmbeddings, ChatOllama
 
 CAMINHO_VECTORSTORE = "backend/vectorstore"
 
-embeddings = OllamaEmbeddings(model="bge-m3")
+embeddings = OllamaEmbeddings(model="bge-m3", keep_alive=3600)
 vectorstore = Chroma(persist_directory=CAMINHO_VECTORSTORE, embedding_function=embeddings)
-llm = ChatOllama(model="mistral")
+llm = ChatOllama(model="mistral", keep_alive="60m")
 
 def responder_pergunta(pergunta: str) -> dict:
     resultados = vectorstore.similarity_search(pergunta, k=5)
