@@ -8,7 +8,8 @@ Um chatbot de perguntas frequentes que responde dúvidas sobre os recursos do ap
 
 > _Vídeo de demonstração do chatbot em funcionamento:_
 
-[COLOQUE AQUI O LINK OU EMBED DO SEU VÍDEO]
+[![🎥 Assistir ao vídeo](https://img.youtube.com/vi/JlUm-DsbaFw/maxresdefault.jpg)](https://youtu.be/JlUm-DsbaFw)
+
 
 ### Exemplo de resposta com fonte encontrada
 
