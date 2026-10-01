@@ -7,7 +7,10 @@ Um chatbot de perguntas frequentes que responde dúvidas sobre os recursos do ap
 ## Demonstração
 
 > _Vídeo de demonstração do chatbot em funcionamento:_
+
+
 👉 Clique no vídeo abaixo para assistir à demonstração.
+
 ⚠️ ATENÇÃO: Ao ser direcionado(a) para o YouTube, recomenda-se ajustar a qualidade do vídeo para uma resolução maior para uma melhor visualização da demonstração.
 
 [![🎥 Assistir ao vídeo](https://img.youtube.com/vi/JlUm-DsbaFw/maxresdefault.jpg)](https://youtu.be/JlUm-DsbaFw)
