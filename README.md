@@ -16,6 +16,9 @@ Um chatbot de perguntas frequentes que responde dúvidas sobre os recursos do ap
 [![🎥 Assistir ao vídeo](https://img.youtube.com/vi/JlUm-DsbaFw/maxresdefault.jpg)](https://youtu.be/JlUm-DsbaFw)
 
 
+**Caso não consiga assistir ao vídeo:**
+
+
 ### Exemplo de resposta com fonte encontrada
 
 <img width="1347" height="606" alt="image" src="https://github.com/user-attachments/assets/ee14e4e0-c16d-4ea8-87a5-66cb5f6826e4" />
