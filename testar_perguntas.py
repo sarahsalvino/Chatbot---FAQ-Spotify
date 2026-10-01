@@ -1,3 +1,4 @@
+#Testando inicialmente as perguntas
 from backend.app.rag_chain import responder_pergunta
 
 perguntas = [

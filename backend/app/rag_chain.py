@@ -1,11 +1,15 @@
+import os
+
+OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
+
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings, ChatOllama
 
 CAMINHO_VECTORSTORE = "backend/vectorstore"
 
-embeddings = OllamaEmbeddings(model="bge-m3", keep_alive=3600)
+embeddings = OllamaEmbeddings(model="bge-m3", keep_alive=3600, base_url=OLLAMA_BASE_URL)
 vectorstore = Chroma(persist_directory=CAMINHO_VECTORSTORE, embedding_function=embeddings)
-llm = ChatOllama(model="mistral", keep_alive="60m")
+llm = ChatOllama(model="mistral", keep_alive="60m", base_url=OLLAMA_BASE_URL)
 
 def responder_pergunta(pergunta: str) -> dict:
     resultados = vectorstore.similarity_search(pergunta, k=5)
