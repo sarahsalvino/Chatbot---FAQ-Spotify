@@ -12,13 +12,15 @@ Um chatbot de perguntas frequentes que responde dúvidas sobre os recursos do ap
 
 ### Exemplo de resposta com fonte encontrada
 
-[COLOQUE AQUI UM PRINT DE UMA PERGUNTA RESPONDIDA COM SUCESSO, MOSTRANDO A FONTE]
+<img width="1347" height="606" alt="image" src="https://github.com/user-attachments/assets/ee14e4e0-c16d-4ea8-87a5-66cb5f6826e4" />
+
 
 ### Exemplo de resposta quando a informação não está disponível no FAQ
 
 Um dos requisitos centrais do desafio é que o chatbot **não invente respostas** quando não tem a informação. Abaixo, um exemplo real do sistema recusando educadamente responder sobre um assunto fora do escopo do FAQ coletado (preço de assinatura):
 
-[COLOQUE AQUI UM PRINT DA PERGUNTA "Quanto custa a assinatura Premium do Spotify?" COM A RESPOSTA "Não tenho essa informação disponível..."]
+<img width="1250" height="319" alt="image" src="https://github.com/user-attachments/assets/d6274481-bb96-4fbf-a212-f6c68f6073f7" />
+
 
 ---
 
