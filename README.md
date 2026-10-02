@@ -44,15 +44,15 @@ O assunto escolhido dentro da Central de Ajuda do Spotify foi **"Recursos no app
 ## Arquitetura e Pipeline
 
 ```mermaid
-flowchart TD
-    A[Usuário digita pergunta] --> B[Streamlit - Frontend]
-    B -->|POST /perguntar| C[FastAPI - Backend]
-    C --> D[Gera embedding da pergunta - bge-m3]
-    D --> E[Busca vetorial no ChromaDB]
-    E --> F[Recupera chunks mais relevantes do FAQ]
-    F --> G[Monta prompt com contexto + pergunta]
-    G --> H[Mistral gera resposta via Ollama]
-    H --> I[Retorna resposta + fontes]
+graph TD
+    A["Usuário digita pergunta"] --> B["Streamlit - Frontend"]
+    B --> C["FastAPI - Backend"]
+    C --> D["Gera embedding da pergunta - bge-m3"]
+    D --> E["Busca vetorial no ChromaDB"]
+    E --> F["Recupera chunks mais relevantes do FAQ"]
+    F --> G["Monta prompt com contexto + pergunta"]
+    G --> H["Mistral gera resposta via Ollama"]
+    H --> I["Retorna resposta + fontes"]
     I --> B
 ```
 
