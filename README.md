@@ -129,7 +129,7 @@ Esta é a forma de execução **testada e validada** ao longo de todo o desenvol
 
 ```bash
 # 1. Clonar o repositório
-git clone <url-do-seu-repositorio>
+git clone <https://github.com/sarahsalvino/Chatbot---FAQ-Spotify.git>
 cd spotfy-chatbot
 
 # 2. Criar e ativar o ambiente virtual
